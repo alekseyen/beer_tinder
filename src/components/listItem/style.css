@@ -1,0 +1,27 @@
+.list-item{
+     display:flex;
+    padding: 1rem;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    background: #282c34;
+    border-radius: 0.5rem;
+
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+.list-item:hover{
+    background: #09d3ac;
+}
+
+.list-item-checked{
+    display:flex;
+    padding: 1rem;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    background: #d3c818;
+    border-radius: 0.5rem;
+
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
