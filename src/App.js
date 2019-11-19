@@ -1,63 +1,58 @@
-import React, {Component} from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import {ListItem} from "./components/listItem";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
+import Login from "./components/login.component";
+import SignUp from "./components/signup.component";
 
-class App extends Component {
+class App extends React.Component {
 
-  constructor(props){
-  super(props);
-
-  this.state = {
-     data: [
-      {
-        title: 'Work',
-        priority : 2,
-      },
-      {
-        title:'Study',
-        priority: 1,
-      },
-       {
-         title:'Sleep',
-         priority: 3,
-       },
-        {
-         title:'Sleep',
-         priority: 3,
-        },
-         {
-             title:'Sleep',
-             priority: 3,
-         },
-         {
-             title:'Sleep',
-             priority: 3,
-         }
-
-
-    ]
+  state = {
+    temp:undefined,
+    city: undefined,
+    country: undefined,
+    pressure: undefined,
+    sunset: undefined,
+    error: undefined
   }
 
-    this.removeElem = this.removeElem.bind(this);
+  handleSubmit(event) {
+    alert('Отправленное имя: ' + this.state.value);
+    event.preventDefault();
   }
 
+  render() {
+    return (
+        <Router>
+        <div className="App">
+          <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+            <div className="container">
+              <Link className="navbar-brand" to={"/sign-in"}>KusokMIPT</Link>
+              <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul className="navbar-nav ml-auto">
+                  <li className="nav-item">
+                    <Link log_method = {this.handleSubmit} className="nav-link" to={"/sign-in"} >Login</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to={"/sign-up"}>Sign up</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
 
-  removeElem(removeIndex){
-        this.setState({data: this.state.data.filter((item,index) => index !== removeIndex)})
+          <div className="auth-wrapper">
+            <div className="auth-inner">
+              <Switch>
+                <Route exact path='/' component={Login} />
+                <Route path="/sign-in" component={Login} />
+                <Route path="/sign-up" component={SignUp} />
+              </Switch>
+            </div>
+          </div>
+        </div></Router>
+    );
   }
-
-  render(){
-    return <div className="App">
-      {this.state.data.map((item, index)=>
-          <ListItem key = {index}
-                    title = {item.title}
-                    onRemove={() => this.removeElem(index)}
-                    priority = {item.priority}/>
-      )}
-    </div>
-  }
-}
-
+};
 export default App;
