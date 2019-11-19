@@ -1,4 +1,4 @@
-# ReactLoginSignupUITemplate
+# Beerder
 
 # Trello
 https://trello.com/b/jovWrEwI/beerder
