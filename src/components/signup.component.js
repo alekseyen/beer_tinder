@@ -41,13 +41,10 @@ export default class SignUp extends Component {
         fetch('http://84.201.136.171:8000/api/users/', {
             method: 'POST',
             dataType:'json',
-            headers: {'Access-Control-Allow-Credentials' : true,
-            'Access-Control-Allow-Origin':'*',
-            'Access-Control-Allow-Methods':'GET',
-            'Access-Control-Allow-Headers':'application/json'},
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                "username": "username",
-                "password": "12345"
+                "username": "username", //заменить
+                "password": "12345" //заменить
             })
         }).then(
             data => {
