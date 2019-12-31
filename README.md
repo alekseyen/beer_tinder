@@ -1,6 +1,4 @@
-# Beerder
-
-# Trello
-https://trello.com/b/jovWrEwI/beerder
-
-[Build React Login & Sign Up UI Template with Bootstrap 4](https://www.positronx.io/build-react-login-sign-up-ui-template-with-bootstrap-4/)
+# ToDO
+- Сделать страничку где пользователи будут указывать основные данные о себе, ставить фотку
+- Свайп-карточки(уже есть готовое, нужно только под нас исправить)
+- 
