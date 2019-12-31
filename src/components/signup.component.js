@@ -37,7 +37,6 @@ export default class SignUp extends Component {
     }
 
     send_request = async () =>{
-
         fetch('http://84.201.136.171:8000/api/users/', {
             method: 'POST',
             dataType:'json',
@@ -48,6 +47,7 @@ export default class SignUp extends Component {
             })
         }).then(
             data => {
+                //вот тут надо переходить на новую страничку
                 console.log(data);
             }
         );
@@ -64,6 +64,8 @@ export default class SignUp extends Component {
 
         console.log('Отправленное имя: ' + this.state.FirstName);
         console.log('Отправленная фамилия: ' + this.state.SecondNameChange);
+
+        //Добавь сразу переход на новую страницу с опросом, потом сделаешь привязку с токеном
     }
 
 
