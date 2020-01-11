@@ -65,7 +65,6 @@ class App extends React.Component {
     };
 
     this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
-
   }
 
   componentDidMount() {

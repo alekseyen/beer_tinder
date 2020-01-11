@@ -111,12 +111,13 @@ body {
 .checkboxCustomButton:checked ~ .CheckboxCustomLabel:before {
     content: '';
     /*background: #8bc53f url(../../pic/logo.svg) no-repeat;*/
-    background-size: 17px;
+    background-size: 7px;
     border-color: #8bc53f;
 }
 
 .checkboxCustomButton:after {
     content: "";
+
     position: absolute;
     display: none;
 }

@@ -21,15 +21,6 @@ function Quiz(props) {
     }
 
     return (
-        <TransitionGroup
-            className="container"
-            component="div"
-            transitionName="fade"
-            transitionEnterTimeout={800}
-            transitionLeaveTimeout={500}
-            transitionAppear
-            transitionAppearTimeout={500}
-        >
             <div key={props.questionId}>
                 <QuestionCount counter={props.questionId} total={props.questionTotal}/>
                 <Question content={props.question}/>
@@ -37,7 +28,6 @@ function Quiz(props) {
                     {props.answerOptions.map(renderAnswerOptions)}
                 </ul>
             </div>
-        </TransitionGroup>
     );
 }
 
