@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import Request from 'react-http-request';
+import {Link} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import logo from "../pic/logo.svg";
 
 export default class SignUp extends Component {
     state = {
@@ -72,7 +75,27 @@ export default class SignUp extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <div>
+                <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+                    <div className="container">
+                        <Link className="navbar-brand" to={"/sign-in"}> <FontAwesomeIcon/> Beerder</Link>
+                        <img src={logo} className="App-logo" alt="logo"/>
+
+
+                        <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+                            <ul className="navbar-nav ml-auto">
+                                <li className="nav-item">
+                                    <Link log_method={this.handleSubmit} className="nav-link"
+                                          to={"/sign-in"}>Login</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to={"/sign-up"}>Sign up</Link>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <form onSubmit={this.handleSubmit}>
                 <h3>Sign Up</h3>
 
                 <div className="form-group">
@@ -100,6 +123,7 @@ export default class SignUp extends Component {
                     Already registered <a href="#">sign in?</a>
                 </p>
             </form>
+            </div>
         );
     }
 }

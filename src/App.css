@@ -22,6 +22,11 @@
   font-size: large;
 }
 
+.my {
+  text-align: left;
+  size: A3;
+}
+
 @keyframes spin {
   from {
     transform: rotate(0deg);
