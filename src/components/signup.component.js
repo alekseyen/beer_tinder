@@ -66,7 +66,7 @@ export default class SignUp extends Component {
         console.log('Отправленная фамилия: ' + this.state.SecondNameChange);
 
         //ToDo с Никитой
-        if (3 > 5)
+        if (3 < 5)
             window.location.assign('http://localhost:3000/after-reg-register/');
     }
 
