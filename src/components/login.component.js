@@ -26,8 +26,11 @@ export default class Login extends Component {
         e.preventDefault();
         console.log('Отправленная почта: ' + this.state.name);
         console.log('Отправленный пароль: ' + this.state.password);
-    }
 
+        //ToDo с Никитой
+        if (5 > 3)
+            window.location.assign('http://localhost:3000/final/');
+    }
 
     render() {
         return (
