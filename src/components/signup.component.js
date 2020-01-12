@@ -70,7 +70,7 @@ export default class SignUp extends Component {
     }
 
     onclick() {
-        window.location.assign('http://localhost:3000/register/');
+        window.location.assign('http://localhost:3000/after-reg-register/');
     }
 
 
