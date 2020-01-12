@@ -28,6 +28,10 @@ export default class Login extends Component {
         console.log('Отправленный пароль: ' + this.state.password);
     }
 
+    onclick() {
+        window.location.assign('http://localhost:3000/final/');
+    }
+
 
     render() {
         return (
@@ -51,7 +55,7 @@ export default class Login extends Component {
                     </div>
                 </div>
 
-                <button type="submit" className="btn btn-primary btn-block">Submit</button>
+                <button type="submit" className="btn btn-primary btn-block" onClick={(e) => this.onclick(e)}>Submit</button>
                 <p className="forgot-password text-right">
                     Forgot <a href="#">password?</a>
                 </p>
