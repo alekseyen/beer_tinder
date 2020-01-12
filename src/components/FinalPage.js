@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ImageUploadComponent from './help_comp/image-upload-components';
 
-//ToDo : перенести проект чела
+//ToDo : перенести проект чела [Артем]
 //Это страничка будет рендриться после:
 // a) Успешного Login
 // б) Второго этапа ргеистрации

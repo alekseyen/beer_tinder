@@ -3,6 +3,9 @@ import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import logo from "../pic/logo.svg";
 
+//ToDO:
+// брать token, как-то его сохранять
+
 export default class Login extends Component {
     state = {
         email: "lox",
