@@ -2,8 +2,8 @@ import React, { Component } from "react";
 
 export default class Login extends Component {
     state = {
-        name:undefined,
-        password: undefined
+        email: "lox",
+        password: "123"
     }
 
     constructor(props) {
@@ -15,20 +15,43 @@ export default class Login extends Component {
     }
 
     emailChange(event){
-        this.setState({name: event.target.value});
+        this.setState({email: event.target.value});
     }
 
     passwordChange(event){
         this.setState({password: event.target.value});
     }
 
+    send_request = async (email, password) => {
+        fetch('http://84.201.136.171:8000/auth', {
+            method: 'POST',
+            dataType: 'json',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                "email": "lox",
+                "password": "123"
+            })
+        }).then(
+            data => {
+                //вот тут надо переходить на новую страничку
+                console.log(data);
+            }
+        );
+
+        console.log(email);
+        console.log(password);
+    }
+
     handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Отправленная почта: ' + this.state.name);
+
+        this.send_request(this.state.email, this.state.password);
+
+        console.log('Отправленная почта: ' + this.state.email);
         console.log('Отправленный пароль: ' + this.state.password);
 
         //ToDo с Никитой
-        if (5 > 3)
+        if (3 > 5)
             window.location.assign('http://localhost:3000/final/');
     }
 
