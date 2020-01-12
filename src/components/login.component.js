@@ -32,17 +32,17 @@ export default class Login extends Component {
         fetch('http://84.201.136.171:8000/auth/', {
             method: 'POST',
             dataType: 'json',
-            headers: {'Content-Type': 'application/json'},
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({
-                "email": "lox",
-                "password": "123"
+                username: "lox",
+                password: "123"
             })
         }).then(
-            data => {
-                //вот тут надо переходить на новую страничку
-                console.log(data);
-            }
-        );
+            response => response.json()
+        ).then(jsondata => console.log(jsondata));
 
         console.log(email);
         console.log(password);
@@ -57,7 +57,7 @@ export default class Login extends Component {
         console.log('Отправленный пароль: ' + this.state.password);
 
         //ToDo с Никитой
-        if (3 > 5)
+        if (5 > 3)
             window.location.assign('http://localhost:3000/final/');
     }
 

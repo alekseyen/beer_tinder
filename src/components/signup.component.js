@@ -39,22 +39,22 @@ export default class SignUp extends Component {
         this.setState({password: event.target.value});
     }
 
-    send_request = async () =>{
+    send_request = async (email, password) => {
         fetch('http://84.201.136.171:8000/api/users/', {
             method: 'POST',
-            dataType:'json',
-            headers: {'Content-Type': 'application/json'},
+            dataType: 'json',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({
-                "username": "username", //заменить
-                "password": "12345" //заменить
+                username: "lox",
+                password: "123"
             })
         }).then(
-            data => {
-                //вот тут надо переходить на новую страничку
-                console.log(data);
-            }
-        );
-    }
+            response => response.json()
+        ).then(jsondata => console.log(jsondata))
+    };
 
     handleSubmit = async (e) => {
         e.preventDefault();
