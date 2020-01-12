@@ -65,7 +65,7 @@ export default class SignUp extends Component {
         console.log('Отправленное имя: ' + this.state.FirstName);
         console.log('Отправленная фамилия: ' + this.state.SecondNameChange);
 
-        //Добавь сразу переход на новую страницу с опросом, потом сделаешь привязку с токеном
+        //ToDo с Никитой
         if (3 > 5)
             window.location.assign('http://localhost:3000/after-reg-register/');
     }

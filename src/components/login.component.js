@@ -27,7 +27,8 @@ export default class Login extends Component {
         console.log('Отправленная почта: ' + this.state.name);
         console.log('Отправленный пароль: ' + this.state.password);
 
-        if (3 > 5)
+        //ToDo с Никитой
+        if (5 > 3)
             window.location.assign('http://localhost:3000/final/');
     }
 
