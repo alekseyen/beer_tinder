@@ -66,13 +66,9 @@ export default class SignUp extends Component {
         console.log('Отправленная фамилия: ' + this.state.SecondNameChange);
 
         //Добавь сразу переход на новую страницу с опросом, потом сделаешь привязку с токеном
-
+        if (3 > 5)
+            window.location.assign('http://localhost:3000/after-reg-register/');
     }
-
-    onclick() {
-        window.location.assign('http://localhost:3000/after-reg-register/');
-    }
-
 
     render() {
         return (
@@ -99,7 +95,7 @@ export default class SignUp extends Component {
                     <input type="password" className="form-control" placeholder="Enter password" onChange={this.passwordChange}/>
                 </div>
 
-                <button type="submit" className="btn btn-primary btn-block" onClick={(e) => this.onclick(e)}>Sign Up</button>
+                <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
                 <p className="forgot-password text-right">
                     Already registered <a href="#">sign in?</a>
                 </p>

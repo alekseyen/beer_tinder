@@ -26,12 +26,10 @@ export default class Login extends Component {
         e.preventDefault();
         console.log('Отправленная почта: ' + this.state.name);
         console.log('Отправленный пароль: ' + this.state.password);
-    }
 
-    onclick() {
-        window.location.assign('http://localhost:3000/final/');
+        if (3 > 5)
+            window.location.assign('http://localhost:3000/final/');
     }
-
 
     render() {
         return (
@@ -55,7 +53,7 @@ export default class Login extends Component {
                     </div>
                 </div>
 
-                <button type="submit" className="btn btn-primary btn-block" onClick={(e) => this.onclick(e)}>Submit</button>
+                <button type="submit" className="btn btn-primary btn-block">Submit</button>
                 <p className="forgot-password text-right">
                     Forgot <a href="#">password?</a>
                 </p>
