@@ -6,6 +6,7 @@ class UserInfo(models.Model):
     name = models.CharField(max_length=100)
     age = models.IntegerField()
     sex = models.BooleanField()
+    preferences = models.TextField()
     description = models.TextField()
 
     def __str__(self):

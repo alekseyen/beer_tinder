@@ -14,3 +14,8 @@ class UserInfoDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = UserInfo.objects.all()
     lookup_field = 'token'
     serializer_class = UserInfoSerializer
+
+class UserInfoDetailCreate(generics.CreateAPIView):
+    queryset = UserInfo.objects.all()
+    lookup_field = 'token'
+    serializer_class = UserInfoSerializer
