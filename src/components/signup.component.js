@@ -9,7 +9,7 @@ class SignUp extends Component {
     state = {
         FirstName: undefined,
         SecondNameChange: undefined,
-        email: "lox",
+        email: "lox2",
         password: "123"
     }
 
@@ -69,9 +69,35 @@ class SignUp extends Component {
         console.log('Отправленное имя: ' + this.state.FirstName);
         console.log('Отправленная фамилия: ' + this.state.SecondNameChange);
 
+        await new Promise(r => setTimeout(r, 500));
         //ToDo с Никитой
         if (3 < 5) {
-            //window.location.assign('http://localhost:3000/after-reg-register/');
+
+
+            fetch('http://84.201.136.171:8000/auth/', {
+                method: 'POST',
+                dataType: 'json',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: this.state.email,
+                    password: this.state.password
+                })
+            }).then(
+                response => response.json()
+            ).then(jsondata => {
+                    console.log(jsondata);
+                    console.log(jsondata.token);
+                    // localStorage.setItem('token', jsondata.token);
+                    console.log(this.props.token);
+                    this.props.setToken(jsondata.token);
+                }
+            );
+
+
+
 
             this.props.history.push('/after-reg-register');
         }

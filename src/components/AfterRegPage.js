@@ -53,37 +53,64 @@ const renderDateTimePicker = ({input: {onChange, value}, showTime}) =>
     />
 
 export default class AfterRegPage extends Component {
+
+    send_request = async (email, password) => {
+        fetch('http://84.201.136.171:8000/user_info/', {
+            method: 'POST',
+            dataType: 'json',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                token: 228,
+                name: this.state.name,
+                age: parseInt(this.state.age, 10),
+                sex: this.state.sex == "male",
+                preferences: this.state.preferences,
+                description: this.state.bio
+            })
+        }).then(
+            response => response.json()
+        ).then(jsondata => {
+                console.log("lol")
+            }
+        );
+    }
+
+
     state = {
         name: "Alex",
-        color: "black",
-        hobbies: "react programming",
         sex: "multi",
-        dob: "20.04.1999"
+        age: 20,
+        preferences: "react programming",
+        bio: "black",
     }
 
     handleSubmit = (e) => {
         console.log(this.state)
     }
 
-    handleChangeColor = (e) => {
-        this.setState({color: e});
-    }
-
-    handleChangeHobbies = (e) => {
-        this.setState({hobbies: e});
-    }
-
     handleChangeSex = (e) => {
         this.setState({sex: e});
     }
 
-    handleChangeDob = (e) => {
-        this.setState({dob: e});
+    handleChangeAge = (e) => {
+        this.setState({age: e});
     }
 
     FirstNameChange(event) {
         this.setState({FirstName: event.target.value});
     }
+
+    handleChangePref = (e) => {
+        this.setState({color: e});
+    }
+
+    handleChangeBio = (e) => {
+        this.setState({hobbies: e});
+    }
+
 
     render() {
         const {pristine, reset, submitting} = this.props;
@@ -92,38 +119,17 @@ export default class AfterRegPage extends Component {
                 <h3 className="App"> Ава</h3>
                 <div className="card">
                     <div className="card-header">
-                        Загрузить аватар*
+                        Upload picture
                     </div>
                     <div className="card-body">
                         <ImageUploadComponent/>
                     </div>
                 </div>
 
-            <div>
+
                 <label>Name</label>
                 <input type="text" className="form-control" placeholder="First name"
                        onChange={(e) => this.FirstNameChange(e)}/>
-
-                <label>Favorite Color</label>
-                <Field
-                    name="favoriteColor"
-                    id='favoriteColor'
-                    component={renderDropdownList}
-                    data={colors}
-                    valueField="value"
-                    textField="color"
-                    onChange={(e) => this.handleChangeColor(e)}
-                />
-            </div>
-            <div>
-                <label>Hobbies</label>
-                <Field
-                    name="hobbies"
-                    id="hobbies"
-                    component={renderMultiselect}
-                    data={['Guitar', 'Cycling', 'Hiking']}
-                    onChange={(e) => this.handleChangeHobbies(e)}/>
-            </div>
             <div>
                 <label>Sex</label>
                 <Field
@@ -134,15 +140,33 @@ export default class AfterRegPage extends Component {
                     onChange={(e) => this.handleChangeSex(e)}/>
             </div>
             <div>
-                <label>DOB</label>
-                <Field
-                    name="dob"
-                    id="dob"
-                    showTime={false}
-                    component={renderDateTimePicker}
-                    onChange={(e) => this.handleChangeDob(e)}
-                />
+                <label>Age</label>
+                <input type="text" className="form-control" placeholder="20"
+                       onChange={(e) => this.handleChangeAge(e)}/>
+
+
             </div>
+
+                <label>Tell about yourself:</label>
+                <div className="form-horizontal">
+                    <div className="form-group">
+                        <div>
+                            <textarea className="form-control" rows="3" placeholder="What's up?"
+                                      required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <label>Tell about your preferences:</label>
+                <div className="form-horizontal">
+                    <div className="form-group">
+                        <div>
+                            <textarea className="form-control" rows="3" placeholder="What's up?"
+                                      required onChange={(e) => this.handleChangePref(e)}></textarea>
+                        </div>
+                    </div>
+                </div>
+
             <div>
                 <button type="submit" onClick={e => {
                     e.preventDefault();
