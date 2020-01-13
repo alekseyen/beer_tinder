@@ -3,8 +3,9 @@ import Request from 'react-http-request';
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import logo from "../pic/logo.svg";
+import {connect} from "react-redux";
 
-export default class SignUp extends Component {
+class SignUp extends Component {
     state = {
         FirstName: undefined,
         SecondNameChange: undefined,
@@ -128,3 +129,17 @@ export default class SignUp extends Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        token: state.token
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setToken: (new_token) => { dispatch({type: 'SET_TOKEN', token: new_token}) }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
