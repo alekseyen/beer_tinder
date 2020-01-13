@@ -9,6 +9,7 @@ import moment from 'moment'
 import momentLocaliser from "react-widgets-moment";
 import 'react-widgets/dist/css/react-widgets.css'
 import {Component} from 'react';
+import {TextField} from "@material-ui/core";
 
 
 //брал отсюда: https://redux-form.com/7.2.2/examples/react-widgets/
@@ -27,7 +28,7 @@ const renderDropdownList = ({input, data, valueField, textField}) =>
                   data={data}
                   valueField={valueField}
                   textField={textField}
-                  onChange={input.onChange}/>
+                  onChange={input.onChange}/>;
 
 const renderMultiselect = ({input, data, valueField, textField}) =>
     <Multiselect {...input}
@@ -53,10 +54,11 @@ const renderDateTimePicker = ({input: {onChange, value}, showTime}) =>
 
 export default class AfterRegPage extends Component {
     state = {
-        color: null,
-        hobbies: null,
-        sex: null,
-        dob: null
+        name: "Alex",
+        color: "black",
+        hobbies: "react programming",
+        sex: "multi",
+        dob: "20.04.1999"
     }
 
     handleSubmit = (e) => {
@@ -79,6 +81,10 @@ export default class AfterRegPage extends Component {
         this.setState({dob: e});
     }
 
+    FirstNameChange(event) {
+        this.setState({FirstName: event.target.value});
+    }
+
     render() {
         const {pristine, reset, submitting} = this.props;
         return (
@@ -94,6 +100,10 @@ export default class AfterRegPage extends Component {
                 </div>
 
             <div>
+                <label>Name</label>
+                <input type="text" className="form-control" placeholder="First name"
+                       onChange={(e) => this.FirstNameChange(e)}/>
+
                 <label>Favorite Color</label>
                 <Field
                     name="favoriteColor"

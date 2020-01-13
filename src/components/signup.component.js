@@ -8,8 +8,8 @@ export default class SignUp extends Component {
     state = {
         FirstName: undefined,
         SecondNameChange: undefined,
-        email:undefined,
-        password: undefined
+        email: "lox",
+        password: "123"
     }
 
     constructor(props) {
@@ -48,8 +48,8 @@ export default class SignUp extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                username: "lox",
-                password: "123"
+                username: this.state.email,
+                password: this.state.password
             })
         }).then(
             response => response.json()
@@ -71,7 +71,8 @@ export default class SignUp extends Component {
         //ToDo с Никитой
         if (3 < 5) {
             //window.location.assign('http://localhost:3000/after-reg-register/');
-            this.props.history.push('/final-card-page');
+
+            this.props.history.push('/after-reg-register');
         }
     }
 
@@ -82,8 +83,6 @@ export default class SignUp extends Component {
                     <div className="container">
                         <Link className="navbar-brand" to={"/sign-in"}> <FontAwesomeIcon/> Beerder</Link>
                         <img src={logo} className="App-logo" alt="logo"/>
-
-
                         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                             <ul className="navbar-nav ml-auto">
                                 <li className="nav-item">
