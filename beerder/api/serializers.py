@@ -18,4 +18,4 @@ class UserSerializer(serializers.ModelSerializer):
 class UserInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserInfo
-        fields = ('token', 'name', 'age', 'sex', 'description')
+        fields = ('token', 'name', 'age', 'sex', 'preferences', 'description')
