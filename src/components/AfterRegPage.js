@@ -10,6 +10,7 @@ import momentLocaliser from "react-widgets-moment";
 import 'react-widgets/dist/css/react-widgets.css'
 import {Component} from 'react';
 import {TextField} from "@material-ui/core";
+import {connect} from "react-redux";
 
 
 //брал отсюда: https://redux-form.com/7.2.2/examples/react-widgets/
@@ -52,10 +53,18 @@ const renderDateTimePicker = ({input: {onChange, value}, showTime}) =>
         value={!value ? null : new Date(value)}
     />
 
-export default class AfterRegPage extends Component {
+class AfterRegPage extends Component {
 
     send_request = async () => {
-        fetch('http://84.201.136.171:8000/user_info/', {
+        console.log(JSON.stringify({
+                token: this.props.token,
+                name: this.state.name,
+                age: this.state.age,
+                sex: this.state.sex == "male",
+                preferences: this.state.preferences,
+                description: this.state.bio
+            }));
+        fetch('http://84.201.136.171:8000/api/user_info/', {
             method: 'POST',
             dataType: 'json',
             headers: {
@@ -63,9 +72,9 @@ export default class AfterRegPage extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                token: 228,
+                token: this.props.token,
                 name: this.state.name,
-                age: parseInt(this.state.age, 10),
+                age: this.state.age,
                 sex: this.state.sex == "male",
                 preferences: this.state.preferences,
                 description: this.state.bio
@@ -94,23 +103,23 @@ export default class AfterRegPage extends Component {
     }
 
     handleChangeSex = (e) => {
-        this.setState({sex: e});
+        this.setState({sex: e.target.value});
     }
 
     handleChangeAge = (e) => {
-        this.setState({age: e});
+        this.setState({age: e.target.value});
     }
 
     FirstNameChange(event) {
-        this.setState({FirstName: event.target.value});
+        this.setState({name: event.target.value});
     }
 
     handleChangePref = (e) => {
-        this.setState({color: e});
+        this.setState({preferences: e.target.value});
     }
 
     handleChangeBio = (e) => {
-        this.setState({hobbies: e});
+        this.setState({description: e.target.value});
     }
 
 
@@ -154,7 +163,7 @@ export default class AfterRegPage extends Component {
                     <div className="form-group">
                         <div>
                             <textarea className="form-control" rows="3" placeholder="What's up?"
-                                      required></textarea>
+                                      required onChange={(e) => this.handleChangeBio(e)}></textarea>
                         </div>
                     </div>
                 </div>
@@ -187,4 +196,17 @@ AfterRegPage = reduxForm({
     form: 'reactWidgets'  // a unique identifier for this form
 })(AfterRegPage)
 
+const mapStateToProps = (state) => {
+    return {
+        token: state.token
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setToken: (new_token) => { dispatch({type: 'SET_TOKEN', token: new_token}) }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AfterRegPage)
 //image Upload

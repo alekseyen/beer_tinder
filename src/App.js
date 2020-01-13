@@ -21,7 +21,7 @@ import { createStore } from "redux";
 //const store = createStore();
 
 const initState = {
-  token: "aaa"
+  token: "none"
 }
 
 
@@ -39,7 +39,7 @@ store.subscribe(() => {
   console.log('token updated');
   console.log(store.getState());
 })
-const setTokenAction = { type: 'SET_TOKEN', token: 'aaaa'};
+const setTokenAction = { type: 'SET_TOKEN', token: 'none'};
 
 store.dispatch(setTokenAction);
 
