@@ -74,7 +74,7 @@ class AfterRegPage extends Component {
             body: JSON.stringify({
                 token: this.props.token,
                 name: this.state.name,
-                age: this.state.age,
+                age: 20,
                 sex: this.state.sex == "male",
                 preferences: this.state.preferences,
                 description: this.state.bio
@@ -99,11 +99,10 @@ class AfterRegPage extends Component {
     handleSubmit = (e) => {
         console.log(this.state);
         this.send_request();
-
     }
 
     handleChangeSex = (e) => {
-        this.setState({sex: e.target.value});
+        this.setState({sex: e});
     }
 
     handleChangeAge = (e) => {
@@ -112,6 +111,7 @@ class AfterRegPage extends Component {
 
     FirstNameChange(event) {
         this.setState({name: event.target.value});
+        console.log(this.state)
     }
 
     handleChangePref = (e) => {
@@ -154,8 +154,6 @@ class AfterRegPage extends Component {
                 <label>Age</label>
                 <input type="text" className="form-control" placeholder="20"
                        onChange={(e) => this.handleChangeAge(e)}/>
-
-
             </div>
 
                 <label>Tell about yourself:</label>
