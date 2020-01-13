@@ -68,15 +68,6 @@ class App extends React.Component {
         </Provider>
     );
   }
-
-  // render() {
-  //     return (
-  //         <div className="App">
-  //             <h1> Добавляем новую компоненту</h1>
-  //             <AfterRegPage afterRegPagefterReg />
-  //         </div>
-  //     )
-  // }
 }
 
 //Через afterRegPagefterReg будем передавать аргументы

@@ -8,6 +8,7 @@ import DateTimePicker from 'react-widgets/lib/DateTimePicker'
 import moment from 'moment'
 import momentLocaliser from "react-widgets-moment";
 import 'react-widgets/dist/css/react-widgets.css'
+import {Component} from 'react';
 
 
 //брал отсюда: https://redux-form.com/7.2.2/examples/react-widgets/
@@ -50,65 +51,104 @@ const renderDateTimePicker = ({input: {onChange, value}, showTime}) =>
         value={!value ? null : new Date(value)}
     />
 
-let AfterRegPage = props => {
-    const {handleSubmit, pristine, reset, submitting} = props
-    return (
-        <form onSubmit={handleSubmit}>
+export default class AfterRegPage extends Component {
+    state = {
+        color: null,
+        hobbies: null,
+        sex: null,
+        dob: null
+    }
+
+    handleSubmit = (e) => {
+        console.log(this.state)
+    }
+
+    handleChangeColor = (e) => {
+        this.setState({color: e});
+    }
+
+    handleChangeHobbies = (e) => {
+        this.setState({hobbies: e});
+    }
+
+    handleChangeSex = (e) => {
+        this.setState({sex: e});
+    }
+
+    handleChangeDob = (e) => {
+        this.setState({dob: e});
+    }
+
+    render() {
+        const {pristine, reset, submitting} = this.props;
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <h3 className="App"> Ава</h3>
+                <div className="card">
+                    <div className="card-header">
+                        Загрузить аватар*
+                    </div>
+                    <div className="card-body">
+                        <ImageUploadComponent/>
+                    </div>
+                </div>
+
             <div>
                 <label>Favorite Color</label>
                 <Field
                     name="favoriteColor"
+                    id='favoriteColor'
                     component={renderDropdownList}
                     data={colors}
                     valueField="value"
-                    textField="color"/>
+                    textField="color"
+                    onChange={(e) => this.handleChangeColor(e)}
+                />
             </div>
             <div>
                 <label>Hobbies</label>
                 <Field
                     name="hobbies"
+                    id="hobbies"
                     component={renderMultiselect}
-                    data={['Guitar', 'Cycling', 'Hiking']}/>
+                    data={['Guitar', 'Cycling', 'Hiking']}
+                    onChange={(e) => this.handleChangeHobbies(e)}/>
             </div>
             <div>
                 <label>Sex</label>
                 <Field
                     name="sex"
+                    id="sex"
                     component={renderSelectList}
-                    data={['male', 'female']}/>
+                    data={['male', 'female']}
+                    onChange={(e) => this.handleChangeSex(e)}/>
             </div>
             <div>
                 <label>DOB</label>
                 <Field
                     name="dob"
+                    id="dob"
                     showTime={false}
                     component={renderDateTimePicker}
+                    onChange={(e) => this.handleChangeDob(e)}
                 />
             </div>
             <div>
-                <button type="submit" disabled={pristine || submitting}>Submit</button>
-                <button type="button" disabled={pristine || submitting} onClick={reset}>Reset Values
+                <button type="submit" onClick={e => {
+                    e.preventDefault();
+                    this.handleSubmit()
+                }}>Submit
                 </button>
+                {/*<button type="button" disabled={pristine || submitting} onClick={reset}>Reset Values</button>*/}
             </div>
 
-            <div></div>
-            <h3> Ава</h3>
-            <div className="card">
-                <div className="card-header">
-                    Загрузить аватар*
-                </div>
-                <div className="card-body">
-                    <ImageUploadComponent/>
-                </div>
-            </div>
         </form>
-    )
+        )
+    }
 }
 
 AfterRegPage = reduxForm({
     form: 'reactWidgets'  // a unique identifier for this form
 })(AfterRegPage)
-
-export default AfterRegPage
 
 //image Upload
