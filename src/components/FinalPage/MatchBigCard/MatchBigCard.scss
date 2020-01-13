@@ -1,0 +1,45 @@
+@import '../../styles/variables.scss';
+
+.matchbigcard-rec-center {
+  display: flex;
+  position: relative;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  transform: rotateX(0deg);
+
+  & .matchbigcard-content-rectangle {
+    display: flex;
+    flex-direction: column;
+    width: 375px;
+    height: 100%;
+    @media screen and (max-width: $break-small) {
+      width: 100%;
+    }
+  }
+}
+.matchbigcard {
+  height: 567px;
+  position: relative;
+  margin-top: auto;
+  background-position-x: 50%;
+  background-position-y: 50%;
+  background-size: cover;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px 2px rgba(0,0,0,0.18);
+  @media screen and (max-width: $break-small) {
+    width: 100%;
+    height: 100%;
+  }
+  & .matchbigcard-text-description {
+    position: absolute;
+    bottom: 40px;
+    left: 30px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,.2);
+    font-family: helvetica neue,Helvetica,Arial,sans-serif;
+    font-size: 34px;
+    font-weight: 500;
+  }
+}

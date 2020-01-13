@@ -1,0 +1,22 @@
+@import 'variables';
+
+body {
+  margin: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.App {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}

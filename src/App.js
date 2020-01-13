@@ -3,6 +3,8 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import logo from './pic/logo.svg'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHeart, faTimes, faBeer } from '@fortawesome/free-solid-svg-icons';
 
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import Login from "./components/login.component";
@@ -12,28 +14,13 @@ import FinalPage from "./components/FinalPage"
 
 //for Redux
 import {Provider} from 'react-redux';
-import {Redux} from 'react-redux'
-//import store from './store';
-import { createStore } from "redux";
+import store from "./store";
 
+// FontAwesome
+library.add(faHeart);
+library.add(faTimes);
+library.add(faBeer);
 
-//const { createStore } = Redux;
-//const store = createStore();
-
-const initState = {
-  token: "none"
-}
-
-
-function myReducer(state = initState, action) {
-  console.log(action, state);
-  console.log('setting...');
-  return {
-    token: action.token
-  }
-}
-
-const store = createStore(myReducer);
 
 store.subscribe(() => {
   console.log('token updated');
@@ -70,6 +57,6 @@ class App extends React.Component {
   }
 }
 
-//Через afterRegPagefterReg будем передавать аргументы
+//Через afterRegPage будем передавать аргументы
 
 export default App;

@@ -1,0 +1,18 @@
+.sidecontent {
+  position: relative;
+  min-height: 0%;
+  max-height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  min-width: 400px;
+  max-width: 450px;
+  // border: 1px solid blue;
+  box-sizing: border-box;
+  margin-left: 4px;
+  margin-right: 4px;
+  padding-bottom: 140px;
+}

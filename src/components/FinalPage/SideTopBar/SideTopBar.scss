@@ -1,0 +1,15 @@
+.sidetopbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: red;
+  box-shadow: 0 2px 4px 2px rgba(0,0,0,0.18);
+  height: 60px;
+  padding-left: 20px;
+  & .header-title {
+    font-family: helvetica neue,Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    letter-spacing: .8px;
+    color: white;
+  }
+}

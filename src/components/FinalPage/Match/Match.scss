@@ -1,0 +1,34 @@
+.match {
+  position: relative;
+  width: 125px;
+  height: 140px;
+  margin: 4px;
+  padding: 4px;
+  // border: 1px solid blue;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: 0.1s ease all;
+  & .photo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: red;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-size: cover;
+    & .photo-title {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,.2);
+      font-family: helvetica neue,Helvetica,Arial,sans-serif;
+      font-size: 22px;
+    }
+  }
+  &:hover {
+    padding: 0px;
+    cursor: pointer;
+  }
+}

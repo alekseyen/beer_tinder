@@ -1,0 +1,15 @@
+@import '../../styles/variables.scss';
+
+.matchtips {
+  display: flex;
+  justify-content: space-between;
+  height: 90px;
+  width: 375px;
+  margin-top: 20px;
+  margin-bottom: auto;
+  // border: 1px solid blue;
+  box-sizing: border-box;
+  @media screen and (max-width: $break-small) {
+    width: 100%;
+  }
+}
