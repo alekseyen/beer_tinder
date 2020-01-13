@@ -54,7 +54,7 @@ const renderDateTimePicker = ({input: {onChange, value}, showTime}) =>
 
 export default class AfterRegPage extends Component {
 
-    send_request = async (email, password) => {
+    send_request = async () => {
         fetch('http://84.201.136.171:8000/user_info/', {
             method: 'POST',
             dataType: 'json',
@@ -88,7 +88,9 @@ export default class AfterRegPage extends Component {
     }
 
     handleSubmit = (e) => {
-        console.log(this.state)
+        console.log(this.state);
+        this.send_request();
+
     }
 
     handleChangeSex = (e) => {
