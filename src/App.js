@@ -12,10 +12,38 @@ import FinalPage from "./components/FinalPage"
 
 //for Redux
 import {Provider} from 'react-redux';
-import store from './store';
+import {Redux} from 'react-redux'
+//import store from './store';
+import { createStore } from "redux";
+
+
+//const { createStore } = Redux;
+//const store = createStore();
+
+const initState = {
+  token: "aaa"
+}
+
+
+function myReducer(state = initState, action) {
+  console.log(action, state);
+  console.log('setting...');
+  return {
+    token: action.token
+  }
+}
+
+const store = createStore(myReducer);
+
+store.subscribe(() => {
+  console.log('token updated');
+  console.log(store.getState());
+})
+const setTokenAction = { type: 'SET_TOKEN', token: 'aaaa'};
+
+store.dispatch(setTokenAction);
 
 class App extends React.Component {
-
   // рендер компоненты с Login и Sign up
 
   render() {

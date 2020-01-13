@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ImageUploadComponent from './help_comp/image-upload-components';
+import {connect} from "react-redux";
 
 //ToDo : перенести проект чела [Артем]
 //Это страничка будет рендриться после:
@@ -11,12 +12,24 @@ class FinalPage extends Component {
         return (
             <div className="lol">
                 <h1>
-                    Карточки
+                    {this.props.token}
                 </h1>
             </div>
         );
     }
 }
 
-export default FinalPage
+const mapStateToProps = (state) => {
+    return {
+        token: state.token
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setToken: (new_token) => { dispatch({type: 'SET_TOKEN', token: new_token}) }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FinalPage)
 

@@ -9,5 +9,5 @@ router.register('users', UserViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('user_info/<str:pk>/', UserInfoDetail.as_view()),
+    path('user_info/<str:token>/', UserInfoDetail.as_view()),
 ]

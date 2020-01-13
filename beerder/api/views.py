@@ -12,4 +12,5 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class UserInfoDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = UserInfo.objects.all()
+    lookup_field = 'token'
     serializer_class = UserInfoSerializer
