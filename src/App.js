@@ -26,8 +26,9 @@ const initState = {
 
 
 function myReducer(state = initState, action) {
-  console.log(action, state);
-  console.log('setting...');
+  console.log('Previous state:', state)
+  console.log('Doing action...')
+  console.log(action);
   return {
     token: action.token
   }
@@ -36,12 +37,12 @@ function myReducer(state = initState, action) {
 const store = createStore(myReducer);
 
 store.subscribe(() => {
-  console.log('token updated');
+  console.log('..token updated. New state:');
   console.log(store.getState());
 })
-const setTokenAction = { type: 'SET_TOKEN', token: 'default_value'};
+//const setTokenAction = { type: 'SET_TOKEN', token: 'default_value'};
 
-store.dispatch(setTokenAction);
+//store.dispatch(setTokenAction);
 
 class App extends React.Component {
   // рендер компоненты с Login и Sign up

@@ -15,8 +15,8 @@ import { connect } from 'react-redux'
 
 class Login extends Component {
     state = {
-        email: "lox",
-        password: "123"
+        email: null,
+        password: null
     }
 
     constructor(props) {
@@ -44,16 +44,14 @@ class Login extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                username: "lox",
-                password: "123"
+                username: this.state.email,
+                password: this.state.password
             })
         }).then(
             response => response.json()
         ).then(jsondata => {
                 console.log(jsondata);
                 console.log(jsondata.token);
-                // localStorage.setItem('token', jsondata.token);
-                console.log(this.props.token);
                 this.props.setToken(jsondata.token);
             }
         );

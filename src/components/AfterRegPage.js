@@ -66,7 +66,7 @@ class AfterRegPage extends Component {
             });
             return;
         }
-        console.log("Current token: " + this.state.token);
+        console.log("Current token: " + this.props.token);
         console.log("Sending this stuff...");
         console.log(JSON.stringify({
                 token: this.props.token,
