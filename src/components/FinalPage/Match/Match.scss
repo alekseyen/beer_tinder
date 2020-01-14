@@ -1,20 +1,30 @@
+.fake_padding {
+  background: #1C8EF9;
+  background-origin: padding-box;
+  background-clip: padding-box;
+}
 .match {
   position: relative;
   width: 125px;
   height: 140px;
   margin: 4px;
   padding: 4px;
+  background-clip: padding-box;
+  border-color: #1C8EF9;
   // border: 1px solid blue;
   border-radius: 5px;
   box-sizing: border-box;
   transition: 0.1s ease all;
-  background-color: #1C8EF9;
+  background: #1C8EF9;
+  background-origin: padding-box;
   & .photo {
+    background-clip:  content-box, padding-box;
+    background-origin: padding-box;
     position: relative;
     width: 100%;
     height: 100%;
     border-radius: 5px;
-    background-color: #1C8EF9;
+    background: #1C8EF9;
     background-position-x: 50%;
     background-position-y: 50%;
     background-size: cover;

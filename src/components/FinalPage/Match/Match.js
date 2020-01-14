@@ -17,6 +17,7 @@ class Match extends React.Component {
   render() {
     const { name, image } = this.props;
     return (
+        <div className="fake_padding">
       <div
         className="match"
         type="button"
@@ -28,6 +29,7 @@ class Match extends React.Component {
           <span className="photo-title">{name}</span>
         </div>
       </div>
+        </div>
     );
   }
 }

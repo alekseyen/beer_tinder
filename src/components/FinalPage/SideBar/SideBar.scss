@@ -6,6 +6,8 @@
   width: 600px;
   // border: 1px solid red;
   box-sizing: border-box;
+  background-color: #1C8EF9;
+  background-origin: content-box;
 
   @media screen and (max-width: $break-small) {
     display: none;
