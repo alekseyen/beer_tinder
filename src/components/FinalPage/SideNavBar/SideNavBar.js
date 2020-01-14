@@ -1,5 +1,6 @@
 import React from 'react';
 import './SideNavBar.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class SideNavBar extends React.Component {
   render() {
