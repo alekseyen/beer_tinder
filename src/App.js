@@ -117,6 +117,11 @@ function myReducer(state = initState, action) {
   console.log('Doing action...')
   console.log(action);
   switch (action.type) {
+    case 'SET_TOKEN':
+      console.log('Setting token...', action.token);
+      return {
+        token: action.token
+      };
     case SELECT_NEXT_BEER: {
       const { activeOne, beers, token } = state;
       if (activeOne.id === -1) { return state; }
