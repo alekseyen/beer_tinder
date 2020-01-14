@@ -10,7 +10,8 @@ class SignUp extends Component {
         FirstName: undefined,
         SecondNameChange: undefined,
         email: "lox2",
-        password: "123"
+        password: "123",
+        error: ""
     }
 
     constructor(props) {
@@ -56,8 +57,47 @@ class SignUp extends Component {
         }).then(
             response => response.json()
         ).then(jsondata => {
+            console.log('Отправленная почта: ' + this.state.email);
+            console.log('Отправленный пароль: ' + this.state.password);
+
             console.log(jsondata);
-            console.log('...done')
+            if (jsondata.hasOwnProperty('id')) {
+                console.log('...done. Authorizing...')
+                //await new Promise(r => setTimeout(r, 300));
+                fetch('http://84.201.136.171:8000/auth/', {
+                    method: 'POST',
+                    dataType: 'json',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: this.state.email,
+                        password: this.state.password
+                    })
+                }).then(
+                    response => response.json()
+                ).then(jsondata => {
+                        console.log(jsondata);
+                        console.log('Got token: ')
+                        console.log(jsondata.token);
+
+                        console.log(this.props.token);
+                        this.props.setToken(jsondata.token);
+                    },
+                    reason => {
+                        this.setState({
+                            error: "Something went wrong. Please try again."
+                        });
+                    }
+                );
+
+                this.props.history.push('/after-reg-register');
+            } else {
+                this.setState({
+                    error: "This email have been already registered. Please sign in."
+                });
+            }
         })
     };
 
@@ -67,43 +107,7 @@ class SignUp extends Component {
         // send the request
         this.send_request();
 
-        console.log('Отправленная почта: ' + this.state.email);
-        console.log('Отправленный пароль: ' + this.state.password);
-
-        await new Promise(r => setTimeout(r, 1000));
         //ToDo с Никитой
-        if (3 < 5) {
-
-
-            fetch('http://84.201.136.171:8000/auth/', {
-                method: 'POST',
-                dataType: 'json',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username: this.state.email,
-                    password: this.state.password
-                })
-            }).then(
-                response => response.json()
-            ).then(jsondata => {
-                    console.log(jsondata);
-                    console.log('Got token: ')
-                    console.log(jsondata.token);
-                    // localStorage.setItem('token', jsondata.token);
-
-                    console.log(this.props.token);
-                    this.props.setToken(jsondata.token);
-                }
-            );
-
-
-
-
-            this.props.history.push('/after-reg-register');
-        }
     }
 
     render() {
@@ -145,6 +149,7 @@ class SignUp extends Component {
                 <p className="forgot-password text-right">
                     Already registered <a href="#">sign in?</a>
                 </p>
+                    <p className="text-danger">{ this.state.error }</p>
             </form>
             </div>
             </div>

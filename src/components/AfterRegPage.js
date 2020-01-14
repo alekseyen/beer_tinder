@@ -96,6 +96,13 @@ class AfterRegPage extends Component {
         ).then(jsondata => {
                 console.log('Got this:')
                 console.log(jsondata);
+                if (jsondata.hasOwnProperty('token')) {
+                    this.props.history.push('/final-card-page');
+                } else {
+                    this.setState({
+                        correct: false
+                    });
+                }
             }
         );
     }
