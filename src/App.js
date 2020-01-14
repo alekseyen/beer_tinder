@@ -23,7 +23,7 @@ import { SELECT_NEXT_BEER, MATCH_BEER } from './actions';
 //const store = createStore();
 
 const initState = {
-  token: "default_value",
+  token: null,
   noMoreBeer: false,
   activeOne: {
     name: 'Triple Karmeliet',
@@ -165,9 +165,7 @@ store.subscribe(() => {
   console.log('..token updated. New state:');
   console.log(store.getState());
 })
-//const setTokenAction = { type: 'SET_TOKEN', token: 'default_value'};
 
-//store.dispatch(setTokenAction);
 
 class App extends React.Component {
   // рендер компоненты с Login и Sign up
