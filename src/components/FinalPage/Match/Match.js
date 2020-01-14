@@ -20,7 +20,6 @@ class Match extends React.Component {
         <div className="fake_padding">
       <div
         className="match"
-        type="button"
       >
         <div
           className="photo"
