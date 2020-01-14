@@ -21,7 +21,7 @@ import { createStore } from "redux";
 //const store = createStore();
 
 const initState = {
-  token: "default_value"
+  token: null
 }
 
 
@@ -40,9 +40,6 @@ store.subscribe(() => {
   console.log('..token updated. New state:');
   console.log(store.getState());
 })
-//const setTokenAction = { type: 'SET_TOKEN', token: 'default_value'};
-
-//store.dispatch(setTokenAction);
 
 class App extends React.Component {
   // рендер компоненты с Login и Sign up
