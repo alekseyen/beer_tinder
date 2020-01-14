@@ -55,7 +55,17 @@ const renderDateTimePicker = ({input: {onChange, value}, showTime}) =>
 
 class AfterRegPage extends Component {
 
+    check_content = () => {
+        return !(this.state.age === null || this.state.name === null || this.state.description === null || this.state.preferences === null);
+    }
+
     send_request = async () => {
+        if (!this.check_content()) {
+            this.setState({
+                correct: false
+            });
+            return;
+        }
         console.log("Current token: " + this.state.token);
         console.log("Sending this stuff...");
         console.log(JSON.stringify({
@@ -92,11 +102,12 @@ class AfterRegPage extends Component {
 
 
     state = {
-        name: "Alex",
+        name: null,
         sex: true,
-        age: 20,
-        preferences: "react programming",
-        bio: "black",
+        age: null,
+        preferences: null,
+        description: null,
+        correct: true
     }
 
     handleSubmit = (e) => {
@@ -184,7 +195,7 @@ class AfterRegPage extends Component {
                 </button>
                 {/*<button type="button" disabled={pristine || submitting} onClick={reset}>Reset Values</button>*/}
             </div>
-
+                { this.state.correct !== true && <p className="text-danger">Please check that you filled all the boxes.</p> }
         </form>
         )
     }
