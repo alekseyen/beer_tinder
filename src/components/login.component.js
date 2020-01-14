@@ -6,6 +6,7 @@ import {combineReducers, createStore} from "redux";
 //import { persistStore, persistReducer } from 'redux-persist'
 //import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 import rootReducer from '../reducers'
+import request_to_back from '../util/requests';
 
 import { connect } from 'react-redux'
 
@@ -16,7 +17,8 @@ import { connect } from 'react-redux'
 class Login extends Component {
     state = {
         email: null,
-        password: null
+        password: null,
+        error: ""
     }
 
     constructor(props) {
@@ -35,7 +37,8 @@ class Login extends Component {
         this.setState({password: event.target.value});
     }
 
-    send_request = async (email, password) => {
+    send_request = async () => {
+
         fetch('http://84.201.136.171:8000/auth/', {
             method: 'POST',
             dataType: 'json',
@@ -50,29 +53,28 @@ class Login extends Component {
         }).then(
             response => response.json()
         ).then(jsondata => {
-                console.log(jsondata);
-                console.log(jsondata.token);
-                this.props.setToken(jsondata.token);
+                console.log('Got:', jsondata);
+                if (jsondata.hasOwnProperty('token')) {
+                    console.log('Token:',jsondata.token);
+                    this.props.setToken(jsondata.token);
+                    this.props.history.push('/final-card-page');
+                } else {
+                    this.setState({error: 'Wrong email or password. Please try again.'});
+                }
+
+                console.log('Отправленная почта: ' + this.state.email);
+                console.log('Отправленный пароль: ' + this.state.password);
+            },
+            reason => {
+                this.setState({error: 'Something went wrong. Please try again.'});
             }
         );
-
-        console.log(email);
-        console.log(password);
     }
 
     handleSubmit = async (e) => {
         e.preventDefault();
 
         this.send_request(this.state.email, this.state.password);
-
-        console.log('Отправленная почта: ' + this.state.email);
-        console.log('Отправленный пароль: ' + this.state.password);
-
-        //ToDo с Никитой
-        if (5 > 3) {
-            //window.location.assign('http://localhost:3000/final-card-page/');
-            this.props.history.push('/final-card-page');
-        }
     }
 
     render() {
@@ -117,6 +119,7 @@ class Login extends Component {
                             <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
                         </div>
                     </div>
+                    <p className="text-danger">{ this.state.error }</p>
 
                     <button type="submit" className="btn btn-primary btn-block">Submit</button>
                     <p className="forgot-password text-right">
