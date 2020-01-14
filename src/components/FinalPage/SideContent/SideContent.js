@@ -6,12 +6,12 @@ import './SideContent.scss';
 
 class SideContent extends React.Component {
   static propTypes = {
-    matchs: PropTypes.arrayOf(Object).isRequired,
+    matches: PropTypes.arrayOf(Object).isRequired,
   }
 
   render() {
-    const { matchs } = this.props;
-    const matchsJSX = matchs.map(match => (
+    const { matches } = this.props;
+    const matchesJSX = matches.map(match => (
       <Match
         key={match.id}
         name={match.name}
@@ -20,12 +20,12 @@ class SideContent extends React.Component {
     ));
     return (
       <div className="sidecontent">
-        {matchsJSX}
+        {matchesJSX}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({ matchs: state.matchedBeers });
+const mapStateToProps = state => ({ matches: state.matchedBeers });
 
 export default connect(mapStateToProps)(SideContent);
