@@ -1,0 +1,13 @@
+@import '../../styles/variables.scss';
+
+.sidebar {
+  position: relative;
+  height: 100%;
+  width: 600px;
+  // border: 1px solid red;
+  box-sizing: border-box;
+
+  @media screen and (max-width: $break-small) {
+    display: none;
+  }
+}
