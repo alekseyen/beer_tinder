@@ -26,13 +26,13 @@ const initState = {
   token: null,
   noMoreBeer: false,
   activeOne: {
-    name: 'Triple Karmeliet',
+    name: 'Tema',
     id: 1,
     image: 'https://sun9-61.userapi.com/c858424/v858424934/f77c4/AjsWhgH0HYs.jpg',
   },
   matchedBeers: [
     {
-      name: 'Kastel',
+      name: 'Egor',
       id: 0,
       image: 'https://sun9-10.userapi.com/c855328/v855328641/e9efd/B4ztkFKd0ls.jpg',
     },
@@ -40,27 +40,27 @@ const initState = {
   beers: [
     {
       "id": "1",
-      "name": "Andey Sazikov",
+      "name": "Andey",
       "image": "https://sun9-21.userapi.com/c639519/v639519230/1584d/VTYmWQhXSNo.jpg"
     },
     {
       "id": "2",
-      "name": "Artem Yamalutdinov",
+      "name": "Artem",
       "image": "https://sun1-25.userapi.com/c851120/v851120226/341c7/nNl-g-2rfz8.jpg"
     },
     {
       "id": "3",
-      "name": "Dmitry Pavlov",
+      "name": "Dmitry",
       "image": "https://sun9-57.userapi.com/c851336/v851336289/b0659/4sL-Q12VRM4.jpg"
     },
     {
       "id": "4",
-      "name": "Aleksey Podkidyshev",
+      "name": "Aleksey",
       "image": "https://sun9-49.userapi.com/c858016/v858016729/645c6/n-G4AZXJ38A.jpg"
     },
     {
       "id": "5",
-      "name": "Haritonov Aleksandr",
+      "name": "Haritonov",
       "image": "https://sun9-69.userapi.com/c858424/v858424541/62545/R4L7atpT1gU.jpg"
     },
     {
@@ -70,7 +70,7 @@ const initState = {
     },
     {
       "id": "7",
-      "name": "Pablichenkp Nikita",
+      "name": "Nikita",
       "image": "https://sun9-8.userapi.com/c849532/v849532818/9cb09/AOmdSJLmktY.jpg"
     }
   ],
@@ -148,18 +148,18 @@ class App extends React.Component {
         <Provider store={store}>
           <Router>
             <div className="App">
-              <div className="auth-wrapper">
+              {/*<div className="auth-wrapper">*/}
 
-                <div className="auth-inner">
+              {/*<div className="auth-inner">*/}
                   <Switch>
                     <Route exact path='/' component={Login}/>
                     <Route path="/sign-in" component={Login}/>
                     <Route path="/sign-up" component={SignUp}/>
                     <Route path="/after-reg-register" component={AfterRegPage}/>
-                    <Route path="/final-card-page" component={FinalPage}/>
+                    <Route path="/final-card-page" component={FinalPage} className="auth-inner"/>
                   </Switch>
-                </div>
-              </div>
+              {/*</div>*/}
+              {/*</div>*/}
             </div>
           </Router>
         </Provider>

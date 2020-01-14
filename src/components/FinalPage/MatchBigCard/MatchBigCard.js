@@ -13,7 +13,7 @@ class MatchBigCard extends React.Component {
   };
 
   static defaultProps = {
-    name: 'No more beers',
+      name: 'Enough..',
     image: Image,
     no: () => {},
     yes: () => {},

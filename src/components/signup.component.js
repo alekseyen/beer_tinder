@@ -108,7 +108,9 @@ class SignUp extends Component {
 
     render() {
         return (
-            <div>
+            <div className="auth-wrapper">
+
+                <div className="auth-inner">
                 <nav className="navbar navbar-expand-lg navbar-light fixed-top">
                     <div className="container">
                         <Link className="navbar-brand" to={"/sign-in"}> <FontAwesomeIcon/> Beerder</Link>
@@ -144,6 +146,7 @@ class SignUp extends Component {
                     Already registered <a href="#">sign in?</a>
                 </p>
             </form>
+            </div>
             </div>
         );
     }

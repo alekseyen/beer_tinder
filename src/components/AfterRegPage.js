@@ -142,61 +142,65 @@ class AfterRegPage extends Component {
     render() {
         const {pristine, reset, submitting} = this.props;
         return (
-            <form onSubmit={this.handleSubmit}>
-                <h3 className="App">Tell others a bit more about you!</h3>
+            <div className="auth-wrapper">
+                <div className="auth-inner">
+
+                    <form onSubmit={this.handleSubmit}>
+                        <h3 className="App">Tell others a bit more about you!</h3>
 
 
-
-                <label>Name</label>
-                <input type="text" className="form-control" placeholder="Name"
-                       onChange={(e) => this.FirstNameChange(e)}/>
-            <div>
-                <label>Sex</label><br />
-                <label className="radio-inline">
-                    <input type="radio" name="sex_radio" checked={this.state.sex}
-                    onChange={ this.handleChangeSex }/>&nbsp;Male&nbsp;
-                </label>
-                <label className="radio-inline">
-                    <input type="radio" name="sex_radio" checked={!this.state.sex}
-                    onChange={ this.handleChangeSex }/>&nbsp;Female
-                </label>
-            </div>
-            <div>
-                <label>Age</label>
-                <input type="text" className="form-control" placeholder="20"
-                       onChange={(e) => this.handleChangeAge(e)}/>
-            </div>
-
-                <label>Describe your preferences:</label>
-                <div className="form-horizontal">
-                    <div className="form-group">
+                        <label>Name</label>
+                        <input type="text" className="form-control" placeholder="Name"
+                               onChange={(e) => this.FirstNameChange(e)}/>
                         <div>
+                            <label>Sex</label><br />
+                            <label className="radio-inline">
+                                <input type="radio" name="sex_radio" checked={this.state.sex}
+                                       onChange={ this.handleChangeSex }/>&nbsp;Male&nbsp;
+                            </label>
+                            <label className="radio-inline">
+                                <input type="radio" name="sex_radio" checked={!this.state.sex}
+                                       onChange={ this.handleChangeSex }/>&nbsp;Female
+                            </label>
+                        </div>
+                        <div>
+                            <label>Age</label>
+                            <input type="text" className="form-control" placeholder="20"
+                                   onChange={(e) => this.handleChangeAge(e)}/>
+                        </div>
+
+                        <label>Describe your preferences:</label>
+                        <div className="form-horizontal">
+                            <div className="form-group">
+                                <div>
                             <textarea className="form-control" rows="3" placeholder="Dark beer like stouts and porters"
                                       required onChange={(e) => this.handleChangePref(e)}></textarea>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <label>Tell something about yourself:</label>
-                <div className="form-horizontal">
-                    <div className="form-group">
-                        <div>
+                        <label>Tell something about yourself:</label>
+                        <div className="form-horizontal">
+                            <div className="form-group">
+                                <div>
                             <textarea className="form-control" rows="3" placeholder="Love machine learning and data science"
                                       required onChange={(e) => this.handleChangeBio(e)}></textarea>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-            <div>
-                <button type="submit" className="btn btn-primary btn-block" onClick={e => {
-                    e.preventDefault();
-                    this.handleSubmit()
-                }}>Continue
-                </button>
-                {/*<button type="button" disabled={pristine || submitting} onClick={reset}>Reset Values</button>*/}
+                        <div>
+                            <button type="submit" className="btn btn-primary btn-block" onClick={e => {
+                                e.preventDefault();
+                                this.handleSubmit()
+                            }}>Continue
+                            </button>
+                            {/*<button type="button" disabled={pristine || submitting} onClick={reset}>Reset Values</button>*/}
+                        </div>
+                        { this.state.correct !== true && <p className="text-danger">Please check that you filled all the boxes.</p> }
+                    </form>
+                </div>
             </div>
-                { this.state.correct !== true && <p className="text-danger">Please check that you filled all the boxes.</p> }
-        </form>
         )
     }
 }
