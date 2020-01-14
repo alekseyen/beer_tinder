@@ -55,11 +55,23 @@ const renderDateTimePicker = ({input: {onChange, value}, showTime}) =>
 
 class AfterRegPage extends Component {
 
+    check_content = () => {
+        return !(this.state.age === null || this.state.name === null || this.state.description === null || this.state.preferences === null);
+    }
+
     send_request = async () => {
+        if (!this.check_content()) {
+            this.setState({
+                correct: false
+            });
+            return;
+        }
+        console.log("Current token: " + this.props.token);
+        console.log("Sending this stuff...");
         console.log(JSON.stringify({
                 token: this.props.token,
                 name: this.state.name,
-                age: this.state.age,
+                age: parseInt(this.state.age),
                 sex: this.state.sex == "male",
                 preferences: this.state.preferences,
                 description: this.state.bio
@@ -74,36 +86,39 @@ class AfterRegPage extends Component {
             body: JSON.stringify({
                 token: this.props.token,
                 name: this.state.name,
-                age: this.state.age,
-                sex: this.state.sex == "male",
+                age: parseInt(this.state.age),
+                sex: this.state.sex,
                 preferences: this.state.preferences,
-                description: this.state.bio
+                description: this.state.description
             })
         }).then(
             response => response.json()
         ).then(jsondata => {
-                console.log("lol")
+                console.log('Got this:')
+                console.log(jsondata);
             }
         );
     }
 
 
     state = {
-        name: "Alex",
-        sex: "multi",
-        age: 20,
-        preferences: "react programming",
-        bio: "black",
+        name: null,
+        sex: true,
+        age: null,
+        preferences: null,
+        description: null,
+        correct: true
     }
 
     handleSubmit = (e) => {
         console.log(this.state);
         this.send_request();
-
     }
 
-    handleChangeSex = (e) => {
-        this.setState({sex: e.target.value});
+    handleChangeSex = () => {
+        this.setState({
+            sex: !this.state.sex,
+        });
     }
 
     handleChangeAge = (e) => {
@@ -112,6 +127,7 @@ class AfterRegPage extends Component {
 
     FirstNameChange(event) {
         this.setState({name: event.target.value});
+        console.log(this.state)
     }
 
     handleChangePref = (e) => {
@@ -127,66 +143,59 @@ class AfterRegPage extends Component {
         const {pristine, reset, submitting} = this.props;
         return (
             <form onSubmit={this.handleSubmit}>
-                <h3 className="App"> Ава</h3>
-                <div className="card">
-                    <div className="card-header">
-                        Upload picture
-                    </div>
-                    <div className="card-body">
-                        <ImageUploadComponent/>
-                    </div>
-                </div>
+                <h3 className="App">Tell others a bit more about you!</h3>
+
 
 
                 <label>Name</label>
-                <input type="text" className="form-control" placeholder="First name"
+                <input type="text" className="form-control" placeholder="Name"
                        onChange={(e) => this.FirstNameChange(e)}/>
             <div>
-                <label>Sex</label>
-                <Field
-                    name="sex"
-                    id="sex"
-                    component={renderSelectList}
-                    data={['male', 'female']}
-                    onChange={(e) => this.handleChangeSex(e)}/>
+                <label>Sex</label><br />
+                <label className="radio-inline">
+                    <input type="radio" name="sex_radio" checked={this.state.sex}
+                    onChange={ this.handleChangeSex }/>&nbsp;Male&nbsp;
+                </label>
+                <label className="radio-inline">
+                    <input type="radio" name="sex_radio" checked={!this.state.sex}
+                    onChange={ this.handleChangeSex }/>&nbsp;Female
+                </label>
             </div>
             <div>
                 <label>Age</label>
                 <input type="text" className="form-control" placeholder="20"
                        onChange={(e) => this.handleChangeAge(e)}/>
-
-
             </div>
 
-                <label>Tell about yourself:</label>
+                <label>Describe your preferences:</label>
                 <div className="form-horizontal">
                     <div className="form-group">
                         <div>
-                            <textarea className="form-control" rows="3" placeholder="What's up?"
-                                      required onChange={(e) => this.handleChangeBio(e)}></textarea>
-                        </div>
-                    </div>
-                </div>
-
-                <label>Tell about your preferences:</label>
-                <div className="form-horizontal">
-                    <div className="form-group">
-                        <div>
-                            <textarea className="form-control" rows="3" placeholder="What's up?"
+                            <textarea className="form-control" rows="3" placeholder="Dark beer like stouts and porters"
                                       required onChange={(e) => this.handleChangePref(e)}></textarea>
                         </div>
                     </div>
                 </div>
 
+                <label>Tell something about yourself:</label>
+                <div className="form-horizontal">
+                    <div className="form-group">
+                        <div>
+                            <textarea className="form-control" rows="3" placeholder="Love machine learning and data science"
+                                      required onChange={(e) => this.handleChangeBio(e)}></textarea>
+                        </div>
+                    </div>
+                </div>
+
             <div>
-                <button type="submit" onClick={e => {
+                <button type="submit" className="btn btn-primary btn-block" onClick={e => {
                     e.preventDefault();
                     this.handleSubmit()
-                }}>Submit
+                }}>Continue
                 </button>
                 {/*<button type="button" disabled={pristine || submitting} onClick={reset}>Reset Values</button>*/}
             </div>
-
+                { this.state.correct !== true && <p className="text-danger">Please check that you filled all the boxes.</p> }
         </form>
         )
     }

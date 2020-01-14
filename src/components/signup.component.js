@@ -41,6 +41,7 @@ class SignUp extends Component {
     }
 
     send_request = async (email, password) => {
+        console.log('Sending new user...');
         fetch('http://84.201.136.171:8000/api/users/', {
             method: 'POST',
             dataType: 'json',
@@ -54,7 +55,10 @@ class SignUp extends Component {
             })
         }).then(
             response => response.json()
-        ).then(jsondata => console.log(jsondata))
+        ).then(jsondata => {
+            console.log(jsondata);
+            console.log('...done')
+        })
     };
 
     handleSubmit = async (e) => {
@@ -66,10 +70,7 @@ class SignUp extends Component {
         console.log('Отправленная почта: ' + this.state.email);
         console.log('Отправленный пароль: ' + this.state.password);
 
-        console.log('Отправленное имя: ' + this.state.FirstName);
-        console.log('Отправленная фамилия: ' + this.state.SecondNameChange);
-
-        await new Promise(r => setTimeout(r, 500));
+        await new Promise(r => setTimeout(r, 1000));
         //ToDo с Никитой
         if (3 < 5) {
 
@@ -89,8 +90,10 @@ class SignUp extends Component {
                 response => response.json()
             ).then(jsondata => {
                     console.log(jsondata);
+                    console.log('Got token: ')
                     console.log(jsondata.token);
                     // localStorage.setItem('token', jsondata.token);
+
                     console.log(this.props.token);
                     this.props.setToken(jsondata.token);
                 }
@@ -125,16 +128,6 @@ class SignUp extends Component {
                 </nav>
                 <form onSubmit={this.handleSubmit}>
                 <h3>Sign Up</h3>
-
-                <div className="form-group">
-                    <label>First name</label>
-                    <input type="text" className="form-control" placeholder="First name" onChange={this.FirstNameChange}/>
-                </div>
-
-                <div className="form-group">
-                    <label>Last name</label>
-                    <input type="text" className="form-control" placeholder="Last name" onChange={this.SecondNameChange}/>
-                </div>
 
                 <div className="form-group">
                     <label>Email address</label>

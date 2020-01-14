@@ -166,7 +166,6 @@ store.subscribe(() => {
   console.log(store.getState());
 })
 
-
 class App extends React.Component {
   // рендер компоненты с Login и Sign up
 
