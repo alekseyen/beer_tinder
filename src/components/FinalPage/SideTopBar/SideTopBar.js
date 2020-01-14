@@ -7,7 +7,7 @@ class SideTopBar extends React.Component {
     return (
       <div className="sidetopbar">
         <span className="header-title">
-          <FontAwesomeIcon icon="beer" /> My Soulmates
+          <FontAwesomeIcon icon="beer"/> Beerder
         </span>
       </div>
     );
