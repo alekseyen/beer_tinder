@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './MatchTips.scss';
 import ButtonRounded from '../Button/ButtonRounded';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class MatchTips extends React.Component {
   static propTypes = {

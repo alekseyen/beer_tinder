@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import './MatchChoose.scss';
 import MatchBigCard from '../MatchBigCard';
 import { matchBeer, selectNextBeer } from '../../../actions';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class MatchChoose extends React.Component {
   static propTypes = {

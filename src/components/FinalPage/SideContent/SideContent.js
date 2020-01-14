@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Match from '../Match';
 import './SideContent.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class SideContent extends React.Component {
   static propTypes = {
