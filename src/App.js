@@ -120,6 +120,10 @@ function myReducer(state = initState, action) {
     case 'SET_TOKEN':
       console.log('Setting token...', action.token);
       return {
+        matchedBeers: state.matchedBeers,
+        noMoreBeer: state.noMoreBeer,
+        beers: state.beers,
+        activeOne: state.activeOne,
         token: action.token
       };
     case SELECT_NEXT_BEER: {
